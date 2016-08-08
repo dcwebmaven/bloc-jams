@@ -34,6 +34,29 @@ var albumMarconi = {
 
 };
 
+//Another Example Album
+var albumEurythmics = {
+    title: 'Be Yourself Tonight',
+    artist: 'Annie Lennox',
+    label: 'RCA',
+    year: '1985',
+    albumArtUrl: 'assets/images/album_covers/20.png',
+    songs: [
+       { title: 'Would I Lie to You?', duration: '4:27' },
+       { title: 'There Must Be an Angel', duration: '5:25' },
+       { title: 'I Love You Like a Ball and Chain', duration: '4:05' },
+       { title: 'Sisters Are Doin’ It for Themselves', duration: '5:59' },
+       { title: 'Conditioned Soul', duration: '4:29' },
+       { title: 'Adrian', duration: '4:34' },
+       { title: 'It’s Alright (Baby’s Coming Back)', duration: '3:49' },
+       { title: 'Here Comes That Sinking Feeling', duration: '5:40' },
+       { title: 'Better to Have Lost in Love', duration: '5:05' }
+
+    ]
+
+};
+
+
 var createSongRow = function(songNumber, songName, songLength){
     var template = 
        '<tr class="album-view-song-item">'
@@ -47,13 +70,13 @@ var createSongRow = function(songNumber, songName, songLength){
        return template;
 };
 
-var setCurrentAlbum = function(album){
-    //#1
-    var albumTitle = document.getElementsByClassName('album-view-title')[0];
+	var albumTitle = document.getElementsByClassName('album-view-title')[0];
     var albumArtist = document.getElementsByClassName('album-view-artist')[0];
     var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
     var albumImage = document.getElementsByClassName('album-cover-art')[0];
     var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
+var setCurrentAlbum = function(album){
    
    //#2
    albumTitle.firstChild.nodeValue = album.title;
@@ -72,7 +95,17 @@ var setCurrentAlbum = function(album){
 };
 
 window.onload = function(){
-
+      
       setCurrentAlbum(albumPicasso);
+
+	  var album = [albumPicasso, albumMarconi, albumEurythmics];
+      var index = 1;
+      albumImage.addEventListener('click', function(event) {
+         setCurrentAlbum(album[index]);
+         index++;
+         if (index == album.length){
+             index = 0;
+         }
+     });
 
 };
