@@ -1,3 +1,4 @@
+
 //Example Album
 var albumPicasso = {
    title: 'The Colors',
@@ -98,8 +99,17 @@ var findParentByClassName = function(element, targetClass){
          alert (currentParent);
     }
     return currentParent;
+  }  else if (currentParent != element.parentElement){
+    
+    console.log("No parent found");
+
+  } else if (currentParent.className == null){
+    
+    console.log("No parent found with that class name");
+
   }
 };
+
 
 var getSongItem = function(element) {
 
@@ -144,16 +154,17 @@ var getSongItem = function(element) {
          if (event.target.parentElement.className === 'album-view-song-item'){
              //Change the content from the number to the play button's HTML
              event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
+             
              var songItem = getSongItem(event.target);
 
               if (songItem.getAttribute('data-song-number') !== currentlyPlayingSong){
                    songItem.innerHTML = playButtonTemplate;  
               }
-
+              
           }
       });
 
-         for (var i = 0; i < songRows.length; i++) {
+         for (i = 0; i < songRows.length; i++) {
               songRows[i].addEventListener('mouseleave', function(event){
 
                 //Revert the content back to the number 
@@ -164,12 +175,15 @@ var getSongItem = function(element) {
                 if (songItemNumber !== currentlyPlayingSong){
                       songItem.innerHTML = songItemNumber;
                 }
+              
               });
 
+             songRows[i].addEventListener('click', function(event){
+                  //Event handler call
+                  clickHandler(event.target);
+             });
 
-         songRows[i].addEventListener('click', function(event){
-              //Event handler call
-              clickHandler(event.target);
-         });
+            }
+        }
+           
 
-}
