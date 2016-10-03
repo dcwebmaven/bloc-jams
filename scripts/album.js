@@ -37,9 +37,8 @@ var albumMarconi = {
 var createSongRow = function(songNumber, songName, songLength){
     var template = 
        '<tr class="album-view-song-item">'
-       + '   <td class="song-item-number">' + songNumber + '</td>'
+        +  '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
        +  '  <td class="song-item-title">' + songName + '</td>'
-       +  '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
        +  '   <td class="song-item-duration">' + songLength + '</td>'
        +  '</tr>'
        ;
@@ -86,6 +85,8 @@ var currentlyPlayingSong = null;
 window.onload = function(){
 
       setCurrentAlbum(albumPicasso);
+
+}
 
 //Change the song number to the pause button
 var findParentByClassName = function(element, targetClass){
@@ -143,7 +144,7 @@ var getSongItem = function(element) {
       songListContainer.addEventListener('mouseover', function(event){
          if (event.target.parentElement.className === 'album-view-song-item'){
              //Change the content from the number to the play button's HTML
-             event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
+             event.target.parentElement.querySelector('.song-item-number').innerHTML = pauseButtonTemplate;
              var songItem = getSongItem(event.target);
 
               if (songItem.getAttribute('data-song-number') !== currentlyPlayingSong){
