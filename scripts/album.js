@@ -299,17 +299,17 @@ var currentSongFromAlbum = null;
 var currentSoundFile = null;
 var currentVolume = 80;
  
-  var $previousButton = $('.main-controls .previous');
-  var $nextButton = $('.main-controls .next');
-  var $playPauseButton = $('.main-controls .play-pause');
+var $previousButton = $('.main-controls .previous');
+var $nextButton = $('.main-controls .next');
+var $playPauseButton = $('.main-controls .play-pause');
 
 
-  $(document).ready(function(){
+$(document).ready(function(){
       setCurrentAlbum(albumPicasso);
       setupSeekBars();
       $previousButton.click(previousSong);
       $nextButton.click(nextSong);
       $playPauseButton.click(togglePlayFromPlayerBar);
-  });
+});
 
            
