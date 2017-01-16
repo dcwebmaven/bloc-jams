@@ -32,7 +32,6 @@ var createSongRow = function(songNumber, songName, songLength){
           var $volumeThumb = $('.volume .thumb');
           $volumeFill.width(currentVolume + '%');
           $volumeThumb.css({left: currentVolume + '%'});  
-
       } else if (currentlyPlayingSongNumber === songNumber) {
           if (currentSoundFile.isPaused()) {
               $(this).html(pauseButtonTemplate);
@@ -274,7 +273,6 @@ var nextSong = function() {
 
   $previousSongNumberCell.html(pauseButtonTemplate);
   $lastSongNumberCell.html(lastSongNumber);
-
 };
 
 var togglePlayFromPlayerBar = function() {
@@ -312,7 +310,6 @@ var currentVolume = 80;
       $previousButton.click(previousSong);
       $nextButton.click(nextSong);
       $playPauseButton.click(togglePlayFromPlayerBar);
-
   });
 
            
